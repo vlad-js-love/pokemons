@@ -1,0 +1,17 @@
+.header {
+  background-color: #f50e02;
+  padding: 16px 0;
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+.image {
+  max-width: 200px;
+}
+.img {
+  object-fit: contain;
+  height: 100%;
+  width: 100%;
+}

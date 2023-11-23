@@ -1,0 +1,23 @@
+.loader {
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: rotate 2s linear infinite;
+
+}
+.loader_image {
+  object-fit: contain;
+  height: 100%;
+  width: 100%;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
