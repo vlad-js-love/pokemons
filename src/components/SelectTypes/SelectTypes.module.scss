@@ -1,9 +1,22 @@
 .wrapper {
-  padding: 40px 0 0;
+  padding: 20px 0 0;
+  display: flex;
+  grid-gap: 10px;
 }
-.selected {
-}
-.list {
+.cancel {
+  cursor: pointer;
+  svg {
+    width: 33px;
+    height: 33px;
+    transition: filter .1s ease-in-out;
+    filter: grayscale(0);
+  }
+  &_disabled {
+    cursor: not-allowed;
+    svg {
+      filter: grayscale(90%);
+    }
+  }
 }
 .select {
   @extend %mon-700;
@@ -58,7 +71,7 @@
   padding: 6px 10px;
   text-transform: capitalize;
   position: relative;
-  & + &{
+  & + & {
     border-top: 1px dashed #000;
   }
   &:hover {

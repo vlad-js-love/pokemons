@@ -5,31 +5,52 @@
 }
 .input {
   background-color: #fff;
-  padding: 10px 16px;
   border-radius: 8px;
-  border: 2px solid #1d2b5e;
+  border: 2px solid transparent;
   width: 250px;
-  transition: border .2s ease-in-out;
+  padding: 10px 40px 10px 16px;
+  transition: border 0.2s ease-in-out;
   @extend %mon-400;
   font-size: 14px;
   line-height: 19px;
   color: #000;
   &:focus {
     outline: 0;
+    border: 2px solid #1d2b5e;
   }
-  &:disabled{
+  &:disabled {
     border: 2px solid #c4c4c4;
     color: #c4c4c4;
   }
+  &_box {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    position: relative;
+    border-radius: 8px;
+    svg {
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 25px;
+      height: 25px;
+      object-fit: contain;
+      cursor: pointer;
+      path {
+        fill: #1d2b5e;
+      }
+    }
+  }
 }
-.error{
+.error {
   @extend %mon-400;
   font-size: 15px;
   line-height: 19px;
   color: #fff;
 }
 
-%mon-400{
-  font-family: 'Montserrat', sans-serif;
+%mon-400 {
+  font-family: "Montserrat", sans-serif;
   font-weight: 400;
 }

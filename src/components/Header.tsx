@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 export const Header: FC = () => {
   return (
-    <div className={styles.header}>
+    <header className={styles.header}>
       <div className="container">
         <div className={styles.header__wrapper}>
           <Link className={styles.image} to="/">
@@ -15,6 +15,6 @@ export const Header: FC = () => {
           <SearchInput />
         </div>
       </div>
-    </div>
+    </header>
   );
 };
