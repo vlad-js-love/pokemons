@@ -1,6 +1,5 @@
 html,
 body {
-  height: 100%;
   background-color: red;
   scroll-behavior: smooth;
 }
@@ -66,21 +65,35 @@ input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-.wrapper {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
+.swiper-wrapper {
+  box-sizing: border-box;
+}
+.swiper-pagination {
+  top: auto !important;
+  bottom: -10px !important;
+  &-bullet {
+    background-color: #3267b0 !important;
+    transition: opacity .2s ease-in-out;
+  }
+}
+.swiper-slide-shadow-cube{
+  opacity: 0 !important;
+}
+.swiper-cube-shadow {
+  &::before {
+    background-color: #fccb07 !important;
+  }
 }
 .container {
   max-width: 1190px;
   margin: 0 auto;
   padding: 0 15px;
 }
-%mon-400{
-  font-family: 'Montserrat', sans-serif;
+%mon-400 {
+  font-family: "Montserrat", sans-serif;
   font-weight: 400;
 }
-%mon-700{
-  font-family: 'Montserrat', sans-serif;
+%mon-700 {
+  font-family: "Montserrat", sans-serif;
   font-weight: 700;
 }

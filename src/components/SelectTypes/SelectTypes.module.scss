@@ -23,7 +23,7 @@
   font-size: 16px;
   line-height: 19px;
   padding: 6px 10px;
-  border: 2px solid #1d2b5e;
+  border: 1px solid #1d2b5e;
   border-radius: 6px 6px 0 0;
   display: inline-block;
   max-width: 145px;
@@ -40,7 +40,7 @@
   align-items: flex-start;
   max-width: 145px;
   width: 100%;
-  border: 2px solid #1d2b5e;
+  border: 1px solid #1d2b5e;
   border-top: none;
   border-radius: 0 0 6px 6px;
   overflow-y: auto;
@@ -57,7 +57,7 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: #1d2b5e;
+    background-color: rgba(#1d2b5e, .8);
     border: 1px solid antiquewhite;
     border-radius: 4px;
   }

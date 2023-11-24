@@ -1,10 +1,10 @@
 import { Dispatch, FC, SetStateAction, useEffect } from "react";
 import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
-import { INavigation } from "../Home/Home";
 import styles from "./HomePagination.module.scss";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { INavigation } from '../../pages/Home/Home';
 
 interface IProps {
   navigation: INavigation;

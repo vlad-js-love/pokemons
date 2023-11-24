@@ -13,6 +13,7 @@
   padding-bottom: 20px;
   height: 200px;
   z-index: 2;
+  animation: poke 3s infinite alternate;
 }
 .grass{
   height: 300px;
@@ -24,5 +25,14 @@
     display: flex;
     justify-content: space-between;
     overflow-x: hidden;
+  }
+}
+
+@keyframes poke {
+  from{
+    transform: translateX(0);
+  }
+  to{
+    transform: translateX(-80%);
   }
 }

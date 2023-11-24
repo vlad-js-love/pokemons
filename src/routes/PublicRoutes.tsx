@@ -1,10 +1,10 @@
 import { FC } from "react";
 import { Route, Routes } from "react-router-dom";
-import styles from "./MainRoutes.module.scss";
-import { PokeCard } from "../PokeCard";
-import { Home } from '../Home/Home';
+import { Home } from '../pages/Home/Home';
+import styles from "./PublicRoutes.module.scss";
+import { PokeCard } from '../pages/Card/PokeCard/PokeCard';
 
-export const MainRoutes: FC = () => {
+export const PublicRoutes: FC = () => {
   return (
     <div className={styles.wrapper}>
       <div className="container">

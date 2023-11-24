@@ -4,12 +4,11 @@ import {
   useLazyGetPokesQuery,
 } from "../../store/api/pokes.api";
 import styles from "./Home.module.scss";
-import { ReqPoke } from "../../types/pokes.types";
-import { PokeHomeItem } from "../PokeHomeItem/PokeHomeItem";
-import Pagination from "@mui/material/Pagination";
-import { HomePagination } from "../HomePagination/HomePagination";
 import Skeleton from "@mui/material/Skeleton";
-import { SelectTypes } from "../SelectTypes/SelectTypes";
+import { SelectTypes } from '../../components/SelectTypes/SelectTypes';
+import { PokeHomeItem } from '../../components/PokeHomeItem/PokeHomeItem';
+import { ReqPoke } from '../../types/pokes.types';
+import { HomePagination } from '../../components/HomePagination/HomePagination';
 
 export type INavigation = {
   typePoke: string | null;

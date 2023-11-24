@@ -9,6 +9,10 @@
 }
 .image {
   max-width: 200px;
+  transition: transform .2s ease-in-out;
+  &:active {
+    transform: scale(0.9);
+  }
 }
 .img {
   object-fit: contain;

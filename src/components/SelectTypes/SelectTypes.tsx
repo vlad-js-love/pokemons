@@ -6,10 +6,10 @@ import {
   useEffect,
   useRef,
 } from "react";
-import { INavigation } from "../Home/Home";
 import { useGetPokesTypesQuery } from "../../store/api/pokes.api";
 import styles from "./SelectTypes.module.scss";
 import clsx from "clsx";
+import { INavigation } from '../../pages/Home/Home';
 
 interface IProps {
   typePoke: string | null;

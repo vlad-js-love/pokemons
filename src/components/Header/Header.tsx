@@ -1,8 +1,8 @@
 import { FC } from "react";
-import styles from "../styles/header.module.scss";
-import { SearchInput } from "./SearchInput/SearchInput";
-import logo from "../assets/images/header/poke.png";
+import styles from "./Header.module.scss";
+import logo from "../../assets/images/header/poke.png";
 import { Link } from "react-router-dom";
+import { SearchInput } from '../SearchInput/SearchInput';
 
 export const Header: FC = () => {
   return (

@@ -1,0 +1,53 @@
+.box {
+  display: flex;
+  align-items: center;
+  grid-gap: 6px;
+}
+.title {
+  @extend %mon-700;
+  font-size: 15px;
+  line-height: 19px;
+  margin-top: 3px;
+  &_img {
+    width: 45px;
+  }
+}
+.types {
+  display: grid;
+  grid-template-columns: minmax(auto, max-content) minmax(auto, auto);
+  align-items: flex-start;
+  grid-gap: 6px;
+  grid-column: span 2;
+}
+.tags {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  grid-gap: 7px;
+  margin-top: 11px;
+}
+.tag {
+  padding: 3px 10px;
+  border-radius: 12px;
+  @extend %mon-400;
+  font-size: 15px;
+  line-height: 19px;
+  text-transform: capitalize;
+  color: #fff;
+  transition: transform 0.15s ease-in-out;
+  &_clickable {
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.15);
+    }
+  }
+}
+
+%mon-400 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+}
+%mon-700 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+}

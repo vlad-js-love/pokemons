@@ -1,4 +1,4 @@
-import { FC, KeyboardEvent, useState, useEffect } from "react";
+import { FC, KeyboardEvent, useState, useEffect, ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./SearchInput.module.scss";
 import { useLazyFindByNameQuery } from "../../store/api/pokes.api";
@@ -7,6 +7,8 @@ import { Loader } from "../Loadeer/Loader";
 export const SearchInput: FC = () => {
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
+  const [prevSearch, setPrevSearch] = useState("");
+  const [isVisibleError, setIsVisibleError] = useState<boolean>(false);
   const [
     findByName,
     {
@@ -17,30 +19,45 @@ export const SearchInput: FC = () => {
     },
   ] = useLazyFindByNameQuery();
 
+  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
+  };
+
   useEffect(() => {
-    if (isSuccessPoke && !isErrorPoke) {
+    if (dataPoke  && !isErrorPoke) {
       navigate(`poke-card/${dataPoke.id}`);
     }
   }, [dataPoke, isSuccessPoke]);
 
+  useEffect(() => {
+    if (search !== prevSearch) {
+      setIsVisibleError(false);
+      setPrevSearch(search);
+    }
+  }, [search, prevSearch]);
+
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       if (search.length) {
-        findByName(search);
+        findByName(search.toLowerCase());
+        setIsVisibleError(true);
       }
     }
   };
 
   const findByNameHandler = () => {
     if (search.length) {
-      findByName(search);
+      findByName(search.toLowerCase());
+      setIsVisibleError(true);
     }
   };
 
   return (
     <div className={styles.input_wrapper}>
       {isFetchingPoke && <Loader />}
-      {isErrorPoke && <div className={styles.error}>Pokemon is missing</div>}
+      {isErrorPoke && isVisibleError && (
+        <div className={styles.error}>Pokemon is missing</div>
+      )}
       <div className={styles.input_box}>
         <input
           className={styles.input}
@@ -48,7 +65,7 @@ export const SearchInput: FC = () => {
           value={search}
           disabled={isFetchingPoke}
           placeholder="Search by name"
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) => onChangeHandler(e)}
           onKeyDown={handleKeyDown}
         />
         <svg

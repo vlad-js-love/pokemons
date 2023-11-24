@@ -29,6 +29,7 @@
     position: relative;
     border-radius: 8px;
     svg {
+      user-select: none;
       position: absolute;
       right: 8px;
       top: 50%;
@@ -37,8 +38,12 @@
       height: 25px;
       object-fit: contain;
       cursor: pointer;
+      transition: transform 0.1s ease-in-out;
       path {
         fill: #1d2b5e;
+      }
+      &:active {
+        transform: scale(0.9) translateY(-50%);
       }
     }
   }
