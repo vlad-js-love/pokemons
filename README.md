@@ -28,4 +28,4 @@ yarn dev
 (Axios не використовувався, оскільки в Redux-toolkit є більш кращий варіант RTK-Query)
 
 ### Посилання на деплой (Vercel)
-[https://vercel.com/vladk7072/pokemons](https://vercel.com/vladk7072/pokemons)
+[https://pokemons-indol.vercel.app/](https://pokemons-indol.vercel.app/)
