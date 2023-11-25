@@ -8,10 +8,14 @@ import { Loader } from "../../components/Loadeer/Loader";
 import { BackHistoryArrow } from "../../components/BackHistoryArrow/BackHistoryArrow";
 
 export const PokeCard: FC = () => {
+  // to take Pokemon ID
   const { id } = useParams();
+
+  // requests
   const [getPokeById, { data: dataPokeById, isSuccess: isSuccessPokeById }] =
     useLazyGetPokeByIdQuery();
 
+  // listeners
   useEffect(() => {
     if (id) {
       getPokeById(id);

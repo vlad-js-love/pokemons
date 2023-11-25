@@ -6,9 +6,8 @@ import { Loader } from "../Loadeer/Loader";
 
 export const SearchInput: FC = () => {
   const navigate = useNavigate();
-  const [search, setSearch] = useState("");
-  const [prevSearch, setPrevSearch] = useState("");
-  const [isVisibleError, setIsVisibleError] = useState<boolean>(false);
+
+  // requests
   const [
     findByName,
     {
@@ -19,38 +18,45 @@ export const SearchInput: FC = () => {
     },
   ] = useLazyFindByNameQuery();
 
+  // local state
+  const [search, setSearch] = useState({
+    previousValue: "",
+    currentValue: "",
+  });
+  const [isVisibleError, setIsVisibleError] = useState<boolean>(false);
+
+  // handles
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.target.value);
+    setSearch((prev) => ({ ...prev, currentValue: e.target.value }));
   };
-
-  useEffect(() => {
-    if (dataPoke  && !isErrorPoke) {
-      navigate(`poke-card/${dataPoke.id}`);
-    }
-  }, [dataPoke, isSuccessPoke]);
-
-  useEffect(() => {
-    if (search !== prevSearch) {
-      setIsVisibleError(false);
-      setPrevSearch(search);
-    }
-  }, [search, prevSearch]);
-
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      if (search.length) {
-        findByName(search.toLowerCase());
+      if (search.currentValue.length) {
+        findByName(search.currentValue.toLowerCase());
         setIsVisibleError(true);
       }
     }
   };
-
   const findByNameHandler = () => {
-    if (search.length) {
-      findByName(search.toLowerCase());
+    if (search.currentValue.length) {
+      findByName(search.currentValue.toLowerCase());
       setIsVisibleError(true);
     }
   };
+
+  // listeners
+  useEffect(() => {
+    if (dataPoke && !isErrorPoke) {
+      navigate(`poke-card/${dataPoke.id}`);
+      setSearch((prev) => ({ ...prev, currentValue: "" }));
+    }
+  }, [dataPoke, isSuccessPoke]);
+  useEffect(() => {
+    if (search.currentValue !== search.previousValue) {
+      setIsVisibleError(false);
+      setSearch((prev) => ({ ...prev, previousValue: search.currentValue }));
+    }
+  }, [search, search.previousValue]);
 
   return (
     <div className={styles.input_wrapper}>
@@ -62,7 +68,7 @@ export const SearchInput: FC = () => {
         <input
           className={styles.input}
           type="text"
-          value={search}
+          value={search.currentValue}
           disabled={isFetchingPoke}
           placeholder="Search by name"
           onChange={(e) => onChangeHandler(e)}

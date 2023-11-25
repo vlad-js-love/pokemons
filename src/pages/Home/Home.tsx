@@ -17,11 +17,13 @@ export type INavigation = {
 };
 
 export const Home: FC = () => {
+  // requests
   const [
     getPokes,
     { data: dataPokes, isSuccess: isSuccessPokes, isFetching: isFetchingPokes },
   ] = useLazyGetPokesQuery({ refetchOnReconnect: true });
 
+  // local state
   const [navigation, setNavigation] = useState<INavigation>({
     btns_count: 0,
     countPages: dataPokes?.count || null,
@@ -30,15 +32,16 @@ export const Home: FC = () => {
     currentPage: 1,
   });
 
-  const { typePoke, result } = useAppSelector(
+  // global state
+  const { typePoke, result, isFetching } = useAppSelector(
     (state) => state.pokeFindByTypeReduces
   );
 
+  // listeners
   useEffect(() => {
     window.scrollTo(0, 0);
     getPokes(20);
   }, []);
-
   useEffect(() => {
     if (dataPokes) {
       setNavigation((prev) => ({
@@ -52,30 +55,38 @@ export const Home: FC = () => {
     }
   }, [dataPokes]);
 
-  const skeletonStyle = {
-    maxWidth: "100%",
-    maxHeight: "100%",
-  };
-
   return (
     <div>
       <SelectTypes />
 
       {typePoke ? (
-        <div className={styles.poke_items}>
-          {result
-            ? result.pokemon?.map((item: any, idx: number) => (
+        isFetching ? (
+          <div className={styles.poke_items}>
+            {[...Array(20)].map((_, idx) => (
+              <Skeleton
+                variant="rounded"
+                style={{
+                  maxWidth: "100%",
+                  maxHeight: "100%",
+                }}
+                height={141}
+                key={idx}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className={styles.poke_items}>
+            {result && result.pokemon && result.pokemon.length > 0 ? (
+              result.pokemon.map((item: any, idx: number) => (
                 <PokeHomeItem poke={item.pokemon} key={idx} />
               ))
-            : [...Array(20)].map((_, idx) => (
-                <Skeleton
-                  variant="rounded"
-                  style={skeletonStyle}
-                  height={141}
-                  key={idx}
-                />
-              ))}
-        </div>
+            ) : (
+              <h4 className={styles.error}>
+                Ohh... no Pokémon of this type found
+              </h4>
+            )}
+          </div>
+        )
       ) : (
         <>
           <div className={styles.poke_items}>
@@ -86,7 +97,10 @@ export const Home: FC = () => {
               : [...Array(20)].map((_, idx) => (
                   <Skeleton
                     variant="rounded"
-                    style={skeletonStyle}
+                    style={{
+                      maxWidth: "100%",
+                      maxHeight: "100%",
+                    }}
                     height={141}
                     key={idx}
                   />

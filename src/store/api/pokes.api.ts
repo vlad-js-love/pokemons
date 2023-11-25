@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { ReqPokes, ReqTypes } from '../../types/pokes.types';
+import { ReqPokes, ReqTypes } from "../../types/pokes.types";
 
 export const pokesApi = createApi({
   reducerPath: "pokesApi",
@@ -46,5 +46,5 @@ export const {
   useLazyGetPokeByIdQuery,
   useLazyFindByNameQuery,
   useGetPokesTypesQuery,
-  useLazyGetPokesByTypeQuery
+  useLazyGetPokesByTypeQuery,
 } = pokesApi;

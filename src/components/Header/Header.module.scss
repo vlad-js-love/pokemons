@@ -9,7 +9,7 @@
 }
 .image {
   max-width: 200px;
-  transition: transform .2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
   &:active {
     transform: scale(0.9);
   }
@@ -21,15 +21,15 @@
 }
 
 @media (max-width: 768px) {
-  .header{
+  .header {
     padding: 8px 0;
   }
-  .image{
+  .image {
     max-width: 150px;
   }
 }
-@media (max-width: 425px){
-  .image{
+@media (max-width: 425px) {
+  .image {
     max-width: 120px;
   }
 }

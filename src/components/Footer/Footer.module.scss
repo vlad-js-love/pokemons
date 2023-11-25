@@ -1,25 +1,25 @@
-.footer{
+.footer {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  &_wrapper{
+  &_wrapper {
     display: flex;
     justify-content: flex-end;
     padding-right: 15%;
   }
 }
-.poke{
+.poke {
   padding-bottom: 20px;
   height: 200px;
   z-index: 2;
   animation: poke 3s infinite alternate;
 }
-.grass{
+.grass {
   height: 300px;
   max-width: 100%;
   width: 100%;
-  &_wrapper{
+  &_wrapper {
     position: absolute;
     bottom: 0;
     display: flex;
@@ -29,26 +29,26 @@
 }
 
 @keyframes poke {
-  from{
+  from {
     transform: translateX(0);
   }
-  to{
+  to {
     transform: translateX(-80%);
   }
 }
 
 @media (max-width: 768px) {
-  .poke{
+  .poke {
     height: 150px;
   }
-  .grass{
+  .grass {
     height: 250px;
   }
   @keyframes poke {
-    from{
+    from {
       transform: translateX(30%);
     }
-    to{
+    to {
       transform: translateX(-60%);
     }
   }

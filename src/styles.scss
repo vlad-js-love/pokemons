@@ -1,7 +1,6 @@
 html,
 body {
   background-color: red;
-  scroll-behavior: smooth;
 }
 html {
   box-sizing: border-box;
@@ -73,10 +72,10 @@ input[type="number"]::-webkit-outer-spin-button {
   bottom: -10px !important;
   &-bullet {
     background-color: #3267b0 !important;
-    transition: opacity .2s ease-in-out;
+    transition: opacity 0.2s ease-in-out;
   }
 }
-.swiper-slide-shadow-cube{
+.swiper-slide-shadow-cube {
   opacity: 0 !important;
 }
 .swiper-cube-shadow {

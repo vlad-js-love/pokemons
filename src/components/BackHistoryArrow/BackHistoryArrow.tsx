@@ -9,7 +9,7 @@ export const BackHistoryArrow: FC = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.btn} onClick={goBack}>
-        <img src={back_arrow} alt="" />
+        <img src={back_arrow} alt="back arrow icon" />
       </div>
     </div>
   );

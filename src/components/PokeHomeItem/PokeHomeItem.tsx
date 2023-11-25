@@ -13,8 +13,10 @@ export const PokeHomeItem: FC<IProps> = ({ poke }) => {
 
   return (
     <Link to={`/poke-card/${dataPoke?.id}`} className={styles.item}>
-      {isSuccess && <img src={dataPoke.sprites.front_default} alt="" />}
-      <div className={styles.item_name}>{poke.name}</div>
+      {isSuccess && (
+        <img src={dataPoke.sprites.front_default} alt="pokemon image" />
+      )}
+      <h4 className={styles.item_name}>{poke.name}</h4>
     </Link>
   );
 };

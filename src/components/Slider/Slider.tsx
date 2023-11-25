@@ -8,10 +8,10 @@ import "swiper/css/effect-cube";
 import "swiper/css/pagination";
 
 interface IProps {
-  dataPokeById: any
+  dataPokeById: any;
 }
 
-export const Slider: FC<IProps> = ({dataPokeById}) => {
+export const Slider: FC<IProps> = ({ dataPokeById }) => {
   return (
     <div className={styles.card}>
       {dataPokeById.sprites?.other?.home?.front_default ||
@@ -96,10 +96,14 @@ export const Slider: FC<IProps> = ({dataPokeById}) => {
           <div className={styles.error_title}>
             Unfortunately, no photos of this Pokemon were found.
           </div>
-          <img className={styles.error_photo} src={not_found_photo} alt="" />
+          <img
+            className={styles.error_photo}
+            src={not_found_photo}
+            alt="images of a photo not found"
+          />
         </>
       )}
-      <div className={styles.name}>My name is {dataPokeById.name}</div>
+      <h1 className={styles.name}>My name is {dataPokeById.name}</h1>
     </div>
   );
 };

@@ -21,10 +21,10 @@ export const PokemonTags: FC<IProps> = ({
   tagsBackgroung,
   clickable,
 }) => {
+  const navigate = useNavigate();
+
   const dispatch = useAppDispatch();
   const { setTypePoke } = pokeFindByTypeSlice.actions;
-
-  const navigate = useNavigate();
 
   const findByIdHandler = (pokeType: string) => {
     if (clickable) {
@@ -36,8 +36,12 @@ export const PokemonTags: FC<IProps> = ({
   return (
     <div className={styles.types}>
       <div className={styles.box}>
-        <img className={styles.title_img} src={type_icon} alt="" />
-        <div className={styles.title}>{title}:</div>
+        <img
+          className={styles.title_img}
+          src={type_icon}
+          alt="decorative icon for type"
+        />
+        <h3 className={styles.title}>{title}:</h3>
       </div>
       {dataPokeById && (
         <div className={styles.tags}>

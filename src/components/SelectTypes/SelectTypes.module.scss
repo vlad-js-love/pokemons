@@ -5,14 +5,14 @@
 }
 .cancel {
   cursor: pointer;
-  transition: transform .2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
   svg {
     width: 33px;
     height: 33px;
-    transition: filter .1s ease-in-out;
+    transition: filter 0.1s ease-in-out;
     filter: grayscale(0);
   }
-  &:active{
+  &:active {
     transform: scale(0.9);
   }
   &_disabled {
@@ -20,7 +20,7 @@
     svg {
       filter: grayscale(90%);
     }
-    &:active{
+    &:active {
       transform: scale(1);
     }
   }
@@ -33,7 +33,7 @@
   border: 1px solid #1d2b5e;
   border-radius: 6px 6px 0 0;
   display: inline-block;
-  max-width: 145px;
+  max-width: 151px;
   width: 100%;
   text-transform: capitalize;
   cursor: pointer;
@@ -64,7 +64,7 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: rgba(#1d2b5e, .8);
+    background-color: rgba(#1d2b5e, 0.8);
     border: 1px solid antiquewhite;
     border-radius: 4px;
   }

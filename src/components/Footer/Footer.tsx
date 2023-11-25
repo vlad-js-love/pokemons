@@ -14,21 +14,9 @@ export const Footer: FC = () => {
       </div>
       <div className={styles.grass_wrapper}>
         <Marquee speed={800}>
-          <img className={styles.grass} src={grass} alt="" />
-          <img className={styles.grass} src={grass} alt="" />
-          <img className={styles.grass} src={grass} alt="" />
-          <img className={styles.grass} src={grass} alt="" />
-          <img className={styles.grass} src={grass} alt="" />
-          <img className={styles.grass} src={grass} alt="" />
-          <img className={styles.grass} src={grass} alt="" />
-          <img className={styles.grass} src={grass} alt="" />
-          <img className={styles.grass} src={grass} alt="" />
-          <img className={styles.grass} src={grass} alt="" />
-          <img className={styles.grass} src={grass} alt="" />
-          <img className={styles.grass} src={grass} alt="" />
-          <img className={styles.grass} src={grass} alt="" />
-          <img className={styles.grass} src={grass} alt="" />
-          <img className={styles.grass} src={grass} alt="" />
+          {[...Array(15)].map((_, idx) => (
+            <img className={styles.grass} src={grass} key={idx} alt="" />
+          ))}
         </Marquee>
       </div>
     </footer>

@@ -1,21 +1,21 @@
-.wrapper{
+.wrapper {
   padding: 15px 0;
 }
-.btn{
+.btn {
   width: 45px;
   height: 45px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 6px;
-  background-color: rgba(#fff, .8);
+  background-color: rgba(#fff, 0.6);
   cursor: pointer;
-  transition: all .15s ease-in-out;
-  &:hover{
+  transition: all 0.15s ease-in-out;
+  &:hover {
     transform: scale(0.9);
-    background-color: rgba(#fff, .6);
+    background-color: rgba(#fff, 0.4);
   }
-  svg{
+  svg {
     width: 25px;
     height: 25px;
   }

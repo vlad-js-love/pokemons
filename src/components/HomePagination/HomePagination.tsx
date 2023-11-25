@@ -4,7 +4,7 @@ import PaginationItem from "@mui/material/PaginationItem";
 import styles from "./HomePagination.module.scss";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { INavigation } from '../../pages/Home/Home';
+import { INavigation } from "../../pages/Home/Home";
 
 interface IProps {
   navigation: INavigation;
@@ -26,10 +26,6 @@ export const HomePagination: FC<IProps> = ({
   const handleChange = (e: React.ChangeEvent<unknown>, value: number) => {
     window.scrollTo(0, 0);
     setNavigation((prev) => ({ ...prev, currentPage: value }));
-  };
-
-  const activePageStyle = {
-    color: "#fccb07", // ваш цвет
   };
 
   return (

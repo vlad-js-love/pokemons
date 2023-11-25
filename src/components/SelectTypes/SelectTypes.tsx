@@ -1,7 +1,5 @@
 import {
-  Dispatch,
   FC,
-  SetStateAction,
   useState,
   useEffect,
   useRef,
@@ -12,46 +10,51 @@ import {
 } from "../../store/api/pokes.api";
 import styles from "./SelectTypes.module.scss";
 import clsx from "clsx";
-import { INavigation } from "../../pages/Home/Home";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
 import { pokeFindByTypeSlice } from "../../store/slices/pokeFindByType.slice";
 
 export const SelectTypes: FC = () => {
+  // requests
   const { data: dataTypes, isSuccess: isSuccessTypes } =
     useGetPokesTypesQuery(null);
   const [
     getPokeByType,
     {
       data: dataPokeByType,
+      isError: isErrorPokeByType,
       isSuccess: isSuccessPokeType,
-      isFetching: isFetchingPokesByType,
     },
   ] = useLazyGetPokesByTypeQuery();
-  const dispatch = useAppDispatch();
-  const { setPokemonsByType, setTypePoke } = pokeFindByTypeSlice.actions;
-  const { typePoke } = useAppSelector((state) => state.pokeFindByTypeReduces);
 
+  // local state
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  // global logic
+  const dispatch = useAppDispatch();
+  const { typePoke } = useAppSelector((state) => state.pokeFindByTypeReduces);
+  const { setPokemonsByType, setTypePoke, setFetching } =
+    pokeFindByTypeSlice.actions;
+
+  // listeners
   useEffect(() => {
     if (isSuccessPokeType) {
       dispatch(setPokemonsByType(dataPokeByType));
     }
   }, [dataTypes]);
-
   useEffect(() => {
     if (typePoke) {
       getPokeByType(typePoke);
+      dispatch(setFetching(true));
     }
   }, [typePoke]);
-
   useEffect(() => {
-    if (isSuccessPokeType) {
+    if (isSuccessPokeType && !isErrorPokeByType) {
       dispatch(setPokemonsByType(dataPokeByType));
+      dispatch(setFetching(false));
+    } else {
+      dispatch(setFetching(false));
     }
   }, [dataPokeByType]);
-
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-
-  const dropdowmRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdowmRef.current && setIsOpen) {
@@ -68,6 +71,9 @@ export const SelectTypes: FC = () => {
       document.removeEventListener("click", handleClickOutside);
     };
   }, []);
+
+  // ref so that the listener follows the click outside the element
+  const dropdowmRef = useRef<HTMLDivElement | null>(null);
 
   return (
     <>
@@ -86,7 +92,7 @@ export const SelectTypes: FC = () => {
             {isOpen && (
               <div className={styles.items}>
                 {dataTypes?.results.map((el, idx: number) => (
-                  <div
+                  <h5
                     className={styles.item}
                     onClick={() => {
                       dispatch(setTypePoke(el.name));
@@ -95,7 +101,7 @@ export const SelectTypes: FC = () => {
                     key={idx}
                   >
                     {el.name}
-                  </div>
+                  </h5>
                 ))}
               </div>
             )}

@@ -12,7 +12,7 @@ export const MainLayout: FC<IProps> = ({ children }) => {
   return (
     <BrowserRouter>
       <Header />
-      <div className={styles.main}>{children}</div>
+      <main className={styles.main}>{children}</main>
       <Footer />
     </BrowserRouter>
   );

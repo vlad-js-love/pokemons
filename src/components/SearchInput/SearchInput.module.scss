@@ -60,33 +60,32 @@
   font-weight: 400;
 }
 
-
 @media (max-width: 768px) {
-  .input{
+  .input {
     max-width: 200px;
     padding: 6px 28px 6px 12px;
-    &_box{
-      svg{
+    &_box {
+      svg {
         right: 6px;
         width: 20px;
         height: 20px;
       }
     }
   }
-  .error{
+  .error {
     font-size: 13px;
     line-height: 15px;
     text-align: right;
   }
 }
 @media (max-width: 425px) {
-  .input{
+  .input {
     max-width: 160px;
-    &_wrapper{
+    &_wrapper {
       grid-gap: 4px;
     }
   }
-  .error{
+  .error {
     font-size: 12px;
     line-height: 14px;
   }

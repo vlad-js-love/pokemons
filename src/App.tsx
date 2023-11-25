@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { MainLayout } from "./layouts/MainLayout";
 import "./styles.scss";
-import { PublicRoutes } from './routes/PublicRoutes';
+import { PublicRoutes } from "./routes/PublicRoutes";
 
 const App: FC = () => {
   return (

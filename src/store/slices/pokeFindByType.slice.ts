@@ -3,11 +3,13 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface IInitialState {
   typePoke: string | null;
   result: any | null;
+  isFetching: boolean;
 }
 
 const initialState: IInitialState = {
   typePoke: "",
   result: null,
+  isFetching: false,
 };
 
 export const pokeFindByTypeSlice = createSlice({
@@ -19,6 +21,9 @@ export const pokeFindByTypeSlice = createSlice({
     },
     setPokemonsByType(state, actions: PayloadAction<any>) {
       state.result = actions.payload;
+    },
+    setFetching(state, actions: PayloadAction<boolean>) {
+      state.isFetching = actions.payload;
     },
   },
 });

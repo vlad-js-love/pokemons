@@ -5,7 +5,6 @@
   align-items: center;
   justify-content: center;
   animation: rotate 2s linear infinite;
-
 }
 .loader_image {
   object-fit: contain;
@@ -23,7 +22,7 @@
 }
 
 @media (max-width: 425px) {
-  .loader{
+  .loader {
     height: 32px;
     width: 32px;
   }
