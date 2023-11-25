@@ -24,8 +24,8 @@ export const HomePagination: FC<IProps> = ({
   }, [navigation.currentPage]);
 
   const handleChange = (e: React.ChangeEvent<unknown>, value: number) => {
-    setNavigation((prev) => ({ ...prev, currentPage: value }));
     window.scrollTo(0, 0);
+    setNavigation((prev) => ({ ...prev, currentPage: value }));
   };
 
   const activePageStyle = {

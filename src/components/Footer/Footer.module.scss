@@ -44,4 +44,12 @@
   .grass{
     height: 250px;
   }
+  @keyframes poke {
+    from{
+      transform: translateX(30%);
+    }
+    to{
+      transform: translateX(-60%);
+    }
+  }
 }

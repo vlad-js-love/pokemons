@@ -1,7 +1,5 @@
 import { FC, useState, useEffect } from "react";
-import {
-  useLazyGetPokesQuery,
-} from "../../store/api/pokes.api";
+import { useLazyGetPokesQuery } from "../../store/api/pokes.api";
 import styles from "./Home.module.scss";
 import Skeleton from "@mui/material/Skeleton";
 import { SelectTypes } from "../../components/SelectTypes/SelectTypes";
