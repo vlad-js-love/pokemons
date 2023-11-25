@@ -3,6 +3,9 @@
 ### Розгортання проекту локально
 
 ```bash
+git clone https://github.com/vladk7072/pokemons.git
+```
+```bash
 yarn
 ```
 ```bash
