@@ -2,7 +2,6 @@
 
 ## Розгортання проекту локально
 
-```bash
 yarn
 yarn dev
 
@@ -23,5 +22,4 @@ react-fast-marquee: Бібліотека яка повторює html тег mar
 
 ### Посилання на деплой
 Ви можете переглянути деплойований проект за цим посиланням.
-```bash
-https://vercel.com/vladk7072/pokemons
+[https://vercel.com/vladk7072/pokemons]
