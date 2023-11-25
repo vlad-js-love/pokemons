@@ -1,10 +1,3 @@
-.wrapper {
-  display: grid;
-  grid-template-columns: minmax(auto, 400px) minmax(auto, auto);
-  align-items: flex-start;
-  grid-gap: 40px;
-  padding: 40px 0;
-}
 .error_title {
   @extend %mon-700;
   font-size: 18px;
@@ -32,17 +25,6 @@
     margin: 0 auto;
     height: 300px;
   }
-}
-.types {
-  grid-column: span 2;
-}
-.moves {
-  grid-column: span 3;
-}
-
-%mon-400 {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 400;
 }
 %mon-700 {
   font-family: "Montserrat", sans-serif;

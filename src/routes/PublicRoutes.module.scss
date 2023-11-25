@@ -2,3 +2,8 @@
   background-color: antiquewhite;
   min-height: calc(100vh - 106px);
 }
+@media (max-width: 768px) {
+  .wrapper{
+    min-height: calc(100vh - 72px);
+  }
+}

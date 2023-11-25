@@ -1,5 +1,5 @@
 .header {
-  background-color: #f50e02;
+  background-color: red;
   padding: 16px 0;
   &__wrapper {
     display: flex;
@@ -18,4 +18,18 @@
   object-fit: contain;
   height: 100%;
   width: 100%;
+}
+
+@media (max-width: 768px) {
+  .header{
+    padding: 8px 0;
+  }
+  .image{
+    max-width: 150px;
+  }
+}
+@media (max-width: 425px){
+  .image{
+    max-width: 120px;
+  }
 }

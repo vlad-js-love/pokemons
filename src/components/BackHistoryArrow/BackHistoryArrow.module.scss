@@ -1,0 +1,22 @@
+.wrapper{
+  padding: 15px 0;
+}
+.btn{
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  background-color: rgba(#fff, .8);
+  cursor: pointer;
+  transition: all .15s ease-in-out;
+  &:hover{
+    transform: scale(0.9);
+    background-color: rgba(#fff, .6);
+  }
+  svg{
+    width: 25px;
+    height: 25px;
+  }
+}

@@ -1,16 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-type ReqFindByType = {
-  
-}
-
 interface IInitialState {
-  type: string;
+  typePoke: string | null;
   result: any | null;
 }
 
 const initialState: IInitialState = {
-  type: "",
+  typePoke: "",
   result: null,
 };
 
@@ -18,9 +14,12 @@ export const pokeFindByTypeSlice = createSlice({
   name: "pokeFindByTypeSlice",
   initialState,
   reducers: {
-    setPokemonsByType(state, actions: PayloadAction<any>){
-      
-    }
+    setTypePoke(state, actions: PayloadAction<string | null>) {
+      state.typePoke = actions.payload;
+    },
+    setPokemonsByType(state, actions: PayloadAction<any>) {
+      state.result = actions.payload;
+    },
   },
 });
 

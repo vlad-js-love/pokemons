@@ -36,3 +36,12 @@
     transform: translateX(-80%);
   }
 }
+
+@media (max-width: 768px) {
+  .poke{
+    height: 150px;
+  }
+  .grass{
+    height: 250px;
+  }
+}

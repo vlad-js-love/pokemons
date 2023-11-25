@@ -21,3 +21,10 @@
     transform: rotate(360deg);
   }
 }
+
+@media (max-width: 425px) {
+  .loader{
+    height: 32px;
+    width: 32px;
+  }
+}

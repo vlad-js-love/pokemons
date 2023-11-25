@@ -5,16 +5,23 @@
 }
 .cancel {
   cursor: pointer;
+  transition: transform .2s ease-in-out;
   svg {
     width: 33px;
     height: 33px;
     transition: filter .1s ease-in-out;
     filter: grayscale(0);
   }
+  &:active{
+    transform: scale(0.9);
+  }
   &_disabled {
     cursor: not-allowed;
     svg {
       filter: grayscale(90%);
+    }
+    &:active{
+      transform: scale(1);
     }
   }
 }

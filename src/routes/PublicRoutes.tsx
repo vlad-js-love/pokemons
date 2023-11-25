@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Home } from '../pages/Home/Home';
 import styles from "./PublicRoutes.module.scss";
-import { PokeCard } from '../pages/Card/PokeCard/PokeCard';
+import { PokeCard } from '../pages/PokeCard/PokeCard';
 
 export const PublicRoutes: FC = () => {
   return (

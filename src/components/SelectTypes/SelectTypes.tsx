@@ -6,19 +6,48 @@ import {
   useEffect,
   useRef,
 } from "react";
-import { useGetPokesTypesQuery } from "../../store/api/pokes.api";
+import {
+  useGetPokesTypesQuery,
+  useLazyGetPokesByTypeQuery,
+} from "../../store/api/pokes.api";
 import styles from "./SelectTypes.module.scss";
 import clsx from "clsx";
-import { INavigation } from '../../pages/Home/Home';
+import { INavigation } from "../../pages/Home/Home";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
+import { pokeFindByTypeSlice } from "../../store/slices/pokeFindByType.slice";
 
-interface IProps {
-  typePoke: string | null;
-  setTypePoke: Dispatch<SetStateAction<INavigation>>;
-}
-
-export const SelectTypes: FC<IProps> = ({ typePoke, setTypePoke }) => {
+export const SelectTypes: FC = () => {
   const { data: dataTypes, isSuccess: isSuccessTypes } =
     useGetPokesTypesQuery(null);
+  const [
+    getPokeByType,
+    {
+      data: dataPokeByType,
+      isSuccess: isSuccessPokeType,
+      isFetching: isFetchingPokesByType,
+    },
+  ] = useLazyGetPokesByTypeQuery();
+  const dispatch = useAppDispatch();
+  const { setPokemonsByType, setTypePoke } = pokeFindByTypeSlice.actions;
+  const { typePoke } = useAppSelector((state) => state.pokeFindByTypeReduces);
+
+  useEffect(() => {
+    if (isSuccessPokeType) {
+      dispatch(setPokemonsByType(dataPokeByType));
+    }
+  }, [dataTypes]);
+
+  useEffect(() => {
+    if (typePoke) {
+      getPokeByType(typePoke);
+    }
+  }, [typePoke]);
+
+  useEffect(() => {
+    if (isSuccessPokeType) {
+      dispatch(setPokemonsByType(dataPokeByType));
+    }
+  }, [dataPokeByType]);
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -52,7 +81,7 @@ export const SelectTypes: FC<IProps> = ({ typePoke, setTypePoke }) => {
               ref={dropdowmRef}
               onClick={() => setIsOpen(!isOpen)}
             >
-              {typePoke !== null ? `Type: ${typePoke}` : "Select type"}
+              {typePoke ? `Type: ${typePoke}` : "Select type"}
             </div>
             {isOpen && (
               <div className={styles.items}>
@@ -60,7 +89,7 @@ export const SelectTypes: FC<IProps> = ({ typePoke, setTypePoke }) => {
                   <div
                     className={styles.item}
                     onClick={() => {
-                      setTypePoke((prev) => ({ ...prev, typePoke: el.name }));
+                      dispatch(setTypePoke(el.name));
                       setIsOpen(false);
                     }}
                     key={idx}
@@ -75,7 +104,7 @@ export const SelectTypes: FC<IProps> = ({ typePoke, setTypePoke }) => {
             className={clsx(styles.cancel, {
               [styles.cancel_disabled]: !typePoke,
             })}
-            onClick={() => setTypePoke((prev) => ({ ...prev, typePoke: null }))}
+            onClick={() => dispatch(setTypePoke(null))}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

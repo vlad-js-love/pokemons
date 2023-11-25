@@ -1,17 +1,16 @@
 import { FC, useState, useEffect } from "react";
 import {
-  useLazyGetPokesByTypeQuery,
   useLazyGetPokesQuery,
 } from "../../store/api/pokes.api";
 import styles from "./Home.module.scss";
 import Skeleton from "@mui/material/Skeleton";
-import { SelectTypes } from '../../components/SelectTypes/SelectTypes';
-import { PokeHomeItem } from '../../components/PokeHomeItem/PokeHomeItem';
-import { ReqPoke } from '../../types/pokes.types';
-import { HomePagination } from '../../components/HomePagination/HomePagination';
+import { SelectTypes } from "../../components/SelectTypes/SelectTypes";
+import { PokeHomeItem } from "../../components/PokeHomeItem/PokeHomeItem";
+import { ReqPoke } from "../../types/pokes.types";
+import { HomePagination } from "../../components/HomePagination/HomePagination";
+import { useAppSelector } from "../../hooks/redux-hooks";
 
 export type INavigation = {
-  typePoke: string | null;
   btns_count: number;
   countPages: number | null;
   previous: string | null;
@@ -24,30 +23,23 @@ export const Home: FC = () => {
     getPokes,
     { data: dataPokes, isSuccess: isSuccessPokes, isFetching: isFetchingPokes },
   ] = useLazyGetPokesQuery({ refetchOnReconnect: true });
-  const [
-    getPokeByType,
-    {
-      data: dataPokeByType,
-      isSuccess: isSuccessPokeType,
-      isFetching: isFetchingPokesByType,
-    },
-  ] = useLazyGetPokesByTypeQuery();
+
   const [navigation, setNavigation] = useState<INavigation>({
     btns_count: 0,
     countPages: dataPokes?.count || null,
     previous: dataPokes?.previous || null,
     next: dataPokes?.next || null,
-    typePoke: null,
     currentPage: 1,
   });
+
+  const { typePoke, result } = useAppSelector(
+    (state) => state.pokeFindByTypeReduces
+  );
+
   useEffect(() => {
+    window.scrollTo(0, 0);
     getPokes(20);
   }, []);
-  useEffect(() => {
-    if (navigation.typePoke) {
-      getPokeByType(navigation.typePoke);
-    }
-  }, [navigation.typePoke]);
 
   useEffect(() => {
     if (dataPokes) {
@@ -69,11 +61,12 @@ export const Home: FC = () => {
 
   return (
     <div>
-      <SelectTypes typePoke={navigation.typePoke} setTypePoke={setNavigation} />
-      {navigation.typePoke !== null && isSuccessPokeType ? (
+      <SelectTypes />
+
+      {typePoke ? (
         <div className={styles.poke_items}>
-          {isSuccessPokeType && !isFetchingPokesByType
-            ? dataPokeByType?.pokemon?.map((item: any, idx: number) => (
+          {result
+            ? result.pokemon?.map((item: any, idx: number) => (
                 <PokeHomeItem poke={item.pokemon} key={idx} />
               ))
             : [...Array(20)].map((_, idx) => (
