@@ -5,13 +5,16 @@ import { Link } from "react-router-dom";
 import { SearchInput } from "../SearchInput/SearchInput";
 import { useAppDispatch } from "../../hooks/redux-hooks";
 import { pokeFindByTypeSlice } from "../../store/slices/pokeFindByType.slice";
+import { homeSlice } from '../../store/slices/homeSlice.slice';
 
 export const Header: FC = () => {
   const dispatch = useAppDispatch();
   const { setTypePoke } = pokeFindByTypeSlice.actions;
+  const { setCurrentPage } = homeSlice.actions;
 
-  const resetPokeTypeHandler = () => {
+  const resetHandler = () => {
     dispatch(setTypePoke(null));
+    dispatch(setCurrentPage(1));
   };
 
   return (
@@ -20,7 +23,7 @@ export const Header: FC = () => {
         <div className={styles.header__wrapper}>
           <Link
             className={styles.image}
-            onClick={() => resetPokeTypeHandler()}
+            onClick={() => resetHandler()}
             to="/"
           >
             <img className={styles.img} src={logo} alt="logo image" />

@@ -1,10 +1,12 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import { reducer as pokeFindByTypeReduces } from "./slices/pokeFindByType.slice";
+import { reducer as pokeFindByTypeReducer } from "./slices/pokeFindByType.slice";
+import { reducer as homeReducer } from "./slices/homeSlice.slice";
 import { pokesApi } from "./api/pokes.api";
 
 const mainReducer = combineReducers({
   [pokesApi.reducerPath]: pokesApi.reducer,
-  pokeFindByTypeReduces,
+  pokeFindByTypeReducer,
+  homeReducer,
 });
 
 export const setupStore = () => {

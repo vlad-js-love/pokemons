@@ -31,7 +31,7 @@ export const SelectTypes: FC = () => {
 
   // global logic
   const dispatch = useAppDispatch();
-  const { typePoke } = useAppSelector((state) => state.pokeFindByTypeReduces);
+  const { typePoke } = useAppSelector((state) => state.pokeFindByTypeReducer);
   const { setPokemonsByType, setTypePoke, setFetching } =
     pokeFindByTypeSlice.actions;
 

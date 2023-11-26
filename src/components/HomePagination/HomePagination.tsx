@@ -5,10 +5,11 @@ import styles from "./HomePagination.module.scss";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { INavigation } from "../../pages/Home/Home";
+import { useAppSelector, useAppDispatch } from '../../hooks/redux-hooks';
+import { homeSlice } from '../../store/slices/homeSlice.slice';
 
 interface IProps {
   navigation: INavigation;
-  setNavigation: Dispatch<SetStateAction<INavigation>>;
   isFetchingPokes: boolean;
   getPokes: (offset: number) => void;
 }
@@ -16,23 +17,28 @@ interface IProps {
 export const HomePagination: FC<IProps> = ({
   navigation,
   getPokes,
-  isFetchingPokes,
-  setNavigation,
+  isFetchingPokes
 }) => {
+
+  const dispatch = useAppDispatch();
+  const { setCurrentPage } = homeSlice.actions
+
+  const { currentPage } = useAppSelector((state) => state.homeReducer);
+
   useEffect(() => {
-    getPokes(navigation.currentPage * 20);
-  }, [navigation.currentPage]);
+    getPokes(currentPage * 20);
+  }, [currentPage]);
 
   const handleChange = (e: React.ChangeEvent<unknown>, value: number) => {
     window.scrollTo(0, 0);
-    setNavigation((prev) => ({ ...prev, currentPage: value }));
+    dispatch(setCurrentPage(value));
   };
 
   return (
     <div className={styles.pagination}>
       <Pagination
         count={navigation.btns_count}
-        page={navigation.currentPage}
+        page={currentPage}
         disabled={isFetchingPokes}
         onChange={handleChange}
         showFirstButton

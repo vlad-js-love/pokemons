@@ -13,7 +13,6 @@ export type INavigation = {
   countPages: number | null;
   previous: string | null;
   next: string | null;
-  currentPage: number;
 };
 
 export const Home: FC = () => {
@@ -28,19 +27,19 @@ export const Home: FC = () => {
     btns_count: 0,
     countPages: dataPokes?.count || null,
     previous: dataPokes?.previous || null,
-    next: dataPokes?.next || null,
-    currentPage: 1,
+    next: dataPokes?.next || null
   });
 
   // global state
   const { typePoke, result, isFetching } = useAppSelector(
-    (state) => state.pokeFindByTypeReduces
+    (state) => state.pokeFindByTypeReducer
   );
+  const { currentPage } = useAppSelector((state) => state.homeReducer);
 
   // listeners
   useEffect(() => {
     window.scrollTo(0, 0);
-    getPokes(20);
+    getPokes(currentPage * 20);
   }, []);
   useEffect(() => {
     if (dataPokes) {
@@ -110,7 +109,6 @@ export const Home: FC = () => {
           <HomePagination
             getPokes={getPokes}
             navigation={navigation}
-            setNavigation={setNavigation}
             isFetchingPokes={isFetchingPokes}
           />
         </>
