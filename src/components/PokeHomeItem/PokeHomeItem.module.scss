@@ -25,12 +25,23 @@
     @extend %mon-400;
     color: #1d2b5e;
     text-transform: capitalize;
+    margin-top: 10px;
+    text-align: center;
   }
   img {
     transition: transform 0.2s ease-in-out;
     height: 100px;
     width: 100px;
     object-fit: cover;
+  }
+}
+.loader{
+  height: 100px;
+  display: flex;
+  align-items: center;
+  img{
+    height: 40px;
+    width: 40px;
   }
 }
 %mon-400 {

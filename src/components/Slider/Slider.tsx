@@ -1,6 +1,6 @@
 import { FC } from "react";
 import styles from "./Slider.module.scss";
-import not_found_photo from "../../assets/images/pokecard/not_found_photo.svg";
+import not_found_photo from "../../assets/images/not_found_photo.svg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCube, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
