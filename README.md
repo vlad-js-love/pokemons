@@ -27,5 +27,7 @@ yarn dev
 - Типизовані модернізовані хуки для редакса та власні хуки.
 (Axios не використовувався, оскільки в Redux-toolkit є більш кращий варіант RTK-Query)
 
+- адаптив для десктопа та моб до 375px
+
 ### Посилання на деплой (Vercel)
 [https://pokemons-indol.vercel.app/](https://pokemons-indol.vercel.app/)
