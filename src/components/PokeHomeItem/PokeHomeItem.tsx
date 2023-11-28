@@ -19,7 +19,7 @@ export const PokeHomeItem: FC<IProps> = ({ poke }) => {
 
   return (
     <Link to={`/poke-card/${dataPoke?.id}`} className={styles.item}>
-      {true ? (
+      {isFetchingPoke ? (
         <div className={styles.loader}>
           <Loader />
         </div>
